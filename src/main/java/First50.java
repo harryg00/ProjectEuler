@@ -135,4 +135,37 @@ public class First50
 
         logger.info ( "Problem 5 (Smallest Multiple): The smallest positive number evenly divisible by all numbers to 20 is {}", highestNumber);
     }
+
+    /**
+     * The sum of the squares of the first ten natural numbers is, 1^2 + 2^2 + [...] + 10^2 = 385
+     * The square of the sum of the first ten natural numbers is (1 + 2 + [...] + 10)^2 = 55^2 == 3025
+     * Hence the difference between the sum of the squares of the first ten natural numbers of the square of the sum is
+     * 3025 - 3855 = 2640
+     * Find te difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
+     */
+    @Test
+    public void Problem6 ()
+    {
+        int sumSquares = 0, squaredSum = 0;
+        for ( int i = 1; i <= 100; i++ ) { sumSquares += i * i; squaredSum += i; }
+        squaredSum *= squaredSum;
+        logger.info ( "The difference between the sum of squares and the square of the sum is {}", squaredSum - sumSquares);
+    }
+
+    /**
+     * By listing the first six prime numbers: 2, 3, 5, 7, 11, 13, we can see that the 6th prime is 13.
+     * What is the 10,001st prime number?
+     */
+    @Test
+    public void Problem7 ()
+    {
+        boolean found = false;
+        int targetNumber = 2, counter = 0;
+        while ( !found )
+        {
+            if ( helpers.isPrime ( targetNumber )) { counter += 1; targetNumber++; }
+            if ( counter == 10001 ) found = true;
+        }
+        logger.info ( "The 10,001st prime number is {}", targetNumber );
+    }
 }

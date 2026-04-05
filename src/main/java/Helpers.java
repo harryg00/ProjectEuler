@@ -2,19 +2,20 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Helpers
 {
     /**
-     * Returns whether a number is a prime number or not using probability primality tests
+     * Returns whether a large number is a prime number or not using probability primality tests
      * @param number The number to check for primality
      * @return True if prime, false if not
      */
     public boolean isPrime ( long number )
     {
-        // If is 3, is even, or is a square number (has a whole square root)
-        if ( number == 3 || number % 2 == 0 || Math.sqrt ( number ) % 1 == 0 ) return false;
+        if ( number > 0 && number <= 3 ) return true;
+        // If is even or factor of 3, or is a square number (has a whole square root)
+        if ( number % 2 == 0 || number % 3 == 0 || number < 1 || ( number - 1 ) % 6 == 0 || ( number + 1 ) % 6 == 0 )
+            return false;
 
         for ( long i = 5; i * i <= number; i += 6 )
         {
@@ -24,6 +25,11 @@ public class Helpers
         return true;
     }
 
+    /**
+     * Checks whether a number is a palindrome by converting a to a character array, reversing it and comparing the two.
+     * @param number The number to check if palindromic
+     * @return True of false if palindromic or not
+     */
     public boolean isPalindromic ( int number )
     {
         String numberAsString = String.valueOf ( number );
