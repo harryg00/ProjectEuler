@@ -160,11 +160,13 @@ public class First50
     public void Problem7 ()
     {
         boolean found = false;
-        int targetNumber = 2, counter = 0;
+        // 2 is prime, by starting at 3 it only needs to check off numbers so is more efficient
+        int targetNumber = 3, counter = 1;
         while ( !found )
         {
-            if ( helpers.isPrime ( targetNumber )) { counter += 1; targetNumber++; }
+            if ( helpers.isPrime ( targetNumber )) { counter += 1; }
             if ( counter == 10001 ) found = true;
+            else targetNumber += 2;
         }
         logger.info ( "The 10,001st prime number is {}", targetNumber );
     }

@@ -12,9 +12,9 @@ public class Helpers
      */
     public boolean isPrime ( long number )
     {
-        if ( number > 0 && number <= 3 ) return true;
+        if ( number > 1 && number <= 3 ) return true;
         // If is even or factor of 3, or is a square number (has a whole square root)
-        if ( number % 2 == 0 || number % 3 == 0 || number < 1 || ( number - 1 ) % 6 == 0 || ( number + 1 ) % 6 == 0 )
+        if ( number % 2 == 0 || number % 3 == 0 || number < 2 )
             return false;
 
         for ( long i = 5; i * i <= number; i += 6 )
