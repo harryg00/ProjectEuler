@@ -658,4 +658,38 @@ public class First50
 
         logger.info ( "The first ten digits of the sum of the one-hundred 50-digit numbers is {}", stringFirst.substring ( 0, 10 ));
     }
+
+    /**
+     * The following iterative sequence is defined for the set of positive integers:
+     * n -> n / 2 (n is even)
+     * n -> 3n + 1 (n is odd)
+     * Using the rule above and starting with 13, we generate the following sequence:
+     * 13 -> 40 -> 20 -> 10 -> 5 -> 16 -> 8 -> 4 -> 2 -> 1
+     * It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not
+     * been proven yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+     * Which starting number, under one million, produces the longest chain?
+     * NOTE: Once the chain starts the terms are allowed to go above one million.
+     */
+    @Test
+    public void Problem14 ()
+    {
+        int longestChain = 0, startingValue = 0;
+        for ( int i = 3; i <= 1000000; i += 2 ) // Even numbers just goes straight 1
+        {
+            long temp = i;
+            int sequenceCounter = 0;
+            while ( temp != 1 )
+            {
+                if (( temp & 1 ) == 0 ) temp /= 2; // If last bit of temp is 0, it is an even number - so divide it
+                else temp = temp * 3 + 1;
+                sequenceCounter++;
+            }
+            if ( sequenceCounter > longestChain )
+            {
+                startingValue = i;
+                longestChain = sequenceCounter;
+            }
+        }
+        logger.info ( "The starting number with the longest chain is {} with {} numbers in the sequence", startingValue, longestChain );
+    }
 }
