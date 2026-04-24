@@ -42,4 +42,24 @@ public class Helpers
         }
         return initial.equals ( reversed );
     }
+
+    /**
+     * Gets the unordered factors of a number by checking if numbers up to the square root are equally divisible
+     * @param number Number to get factors of
+     * @return List of integers containing all factors of the number
+     */
+    public List < Integer > GetFactors ( int number )
+    {
+        List < Integer > factors = new ArrayList <>();
+        if ( number < 1 ) return factors;
+        for ( int x = 1; x <= ( int ) Math.sqrt ( number ); x++ ) // Check all numbers up to the square root
+        {
+            if ( number % x == 0 )
+            { // If the number is divisible without a remainder, it is a factor - add the relating factor too
+                factors.add ( x );
+                if (x != number / x ) factors.add ( number / x ); // if y = number / x, x * y = number
+            }
+        }
+        return factors;
+    }
 }
